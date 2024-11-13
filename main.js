@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var RedVeterinarias_1 = require("./clases/RedVeterinarias");
+var Veterinaria_1 = require("./clases/Veterinaria");
+var red = new RedVeterinarias_1.RedVeterinarias("a");
+var vete = new Veterinaria_1.Veterinaria("Lux", "Loma negra");
+red.agregarVeterinaria(vete);
+console.log(red.getVeterinarias());
+red.eliminarVeterinaria("Lux");
+console.log(red.getVeterinarias());
