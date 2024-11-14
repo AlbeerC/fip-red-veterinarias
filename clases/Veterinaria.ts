@@ -1,4 +1,5 @@
-import { generarId } from '../funciones/generadorId'
+import { generarId } from '../funciones/generadorId';
+import { Proovedor } from './Proovedor';
 
 export class Veterinaria {
     private nombre: string;
@@ -14,25 +15,53 @@ export class Veterinaria {
         this.id = generarId();
     }
 
-    agregarProovedor(proovedor: Proovedor): void {
-        this.proovedores.push(proovedor);
+    // Métodos proovedor
+    agregarProovedor(nombre: string, telefono: number): void {
+        let nuevoProovedor = new Proovedor(nombre, telefono);
+
+        // Verifica que no exista ya un proovedor con el mismo ID
+        while (this.proovedores.some((proovedor) => proovedor.getId() === nuevoProovedor.getId())) {
+            nuevoProovedor = new Proovedor(nombre, telefono);
+        }
+
+        this.proovedores.push(nuevoProovedor);
+        console.log(`Agregado nuevo proovedor ${nombre} con id ${nuevoProovedor.getId()}`);
     }
 
-    agregarCliente(cliente: Cliente): void {
-        this.clientes.push(cliente);
+    eliminarProovedor(id: number): void {
+        const index = this.proovedores.findIndex((proovedor) => proovedor.getId() === id);
+
+        if (index > -1) {
+            this.proovedores.splice(index, 1);
+        } else {
+            console.log("El ID ingresado no pertenece a ningún proovedor");
+        }
     }
 
-    agregarPaciente(paciente: Paciente): void {
-        this.pacientes.push(paciente);
+    realizarPedido(): void {
+        
     }
 
-    eliminarProovedor(): void
 
-    eliminarCliente(): void
+    // Métodos cliente
+    agregarCliente(): void {
 
-    eliminarPaciente(): void
+    }
 
-    realizarPedido(): void;
+    eliminarCliente(): void {
+
+    }
+
+
+    // Métodos paciente
+    agregarPaciente(): void {
+
+    }
+
+    eliminarPaciente(): void {
+
+    }
+
 
     // Getters
     getNombre(): string {

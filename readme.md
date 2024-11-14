@@ -14,4 +14,4 @@
 
 - Pacientes (mascotas): nombre, especie (si no es  perro o gato, deberá registrarse como exótica), id  del  dueño.
 
-- Proveedores: nombre, teléfono  y un id  generado  como los otros
+- Proveedores: nombre, teléfono  y un id  generado  como los otros. Contiene un inventario de productos, donde cada uno es una instancia de la clase Producto.
