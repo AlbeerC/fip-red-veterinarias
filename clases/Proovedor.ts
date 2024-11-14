@@ -11,25 +11,40 @@ export class Proovedor {
         this.nombre = nombre;
         this.id = generarId();
         this.telefono = telefono;
+        this.inventario = this.crearInventario();
     }
 
-    agregarProducto(nombre: string, cantidad: number, precio: number): void {
-        const nuevoProducto = new Producto(nombre, cantidad, precio);
-        this.inventario.push(nuevoProducto);
-        console.log(`${this.nombre} agregó: ${nuevoProducto}`);
+    private crearInventario(): Producto[] {
+        return [
+            new Producto("Alimento para perro 3Kg", 20, 6000),
+            new Producto("Alimento para perro 15Kg", 20, 25000),
+            new Producto("Alimento para gatos 3kg", 18, 9000),
+            new Producto("Alimento para gatos 7kg", 18, 18000),
+            new Producto("Correa para perro", 30, 3000),
+            new Producto("Correa para gato", 22, 2500)
+        ]
     }
 
-    obtenerProductos(): Producto[] {
-        return this.inventario;
+
+    // Getters
+    getNombre(): string {
+        return this.nombre;
     }
 
-    eliminarProducto(nombre: string): void {
-        const index = this.inventario.findIndex((prod) => prod.getNombre() === nombre);
+    getId(): number {
+        return this.id;
+    }
 
-        if (index > -1) {
-            this.inventario.splice(index, 1);
-        } else {
-            console.log("El nombre ingresado no pertenece a ningún producto del inventario");
-        }
+    getTelefono(): number {
+        return this.telefono;
+    }
+
+    // Setters
+    setNombre(nombre: string): void {
+        this.nombre = nombre;
+    }
+
+    setTelefono(telefono: number): void {
+        this.telefono = telefono;
     }
 }

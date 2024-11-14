@@ -13,6 +13,7 @@ export class RedVeterinarias {
     }
 
     eliminarVeterinaria(nombre: string): void {
+        // Busca el índice de la veterinaria que conincida con el nombre ingresado
         const index = this.veterinarias.findIndex(vete => vete.getNombre().toLowerCase() === nombre.toLowerCase());
 
         // Si el índice es mayor a -1, la veterinaria a eliminar existe
