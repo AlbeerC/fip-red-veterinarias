@@ -1,4 +1,5 @@
 import { generarId } from '../funciones/generadorId';
+import { Cliente } from './Cliente';
 import { Proovedor } from './Proovedor';
 
 export class Veterinaria {
@@ -44,12 +45,26 @@ export class Veterinaria {
 
 
     // Métodos cliente
-    agregarCliente(): void {
+    agregarCliente(nombre: string, telefono: number): void {
+        let nuevoCliente = new Cliente(nombre, telefono);
+        // Verifica que no exista ya un proovedor con el mismo ID
+        while (this.clientes.some((cliente) => cliente.getId() === nuevoCliente.getId())) {
+            nuevoCliente = new Cliente(nombre, telefono);
+        }
 
+        this.clientes.push(nuevoCliente);
+        console.log(`Agregado nuevo cliente ${nombre} con id ${nuevoCliente.getId()}`);
     }
 
-    eliminarCliente(): void {
+    eliminarCliente(id: number): void {
+        const index = this.clientes.findIndex((cliente) => cliente.getId() === id);
 
+        if (index > -1) {
+            this.clientes.splice(index, 1);
+        } else {
+            console.log("El ID ingresado no pertenece a ningún cliente");
+        }
+    }
     }
 
 
