@@ -1,5 +1,5 @@
 import { generarId } from "../funciones/generadorId";
-import { Paciente } from "./paciente"; //Arreglar luego de que juan haya creado la clase paciente.
+import { Paciente } from "./Paciente"; //Arreglar luego de que juan haya creado la clase paciente.
 
 export class Cliente {
     private nombre: string;
