@@ -38,16 +38,13 @@ export class Veterinaria {
             console.log("El ID ingresado no pertenece a ningún proovedor");
         }
     }
-
-    realizarPedido(): void {
-        
-    }
-
+    
 
     // Métodos cliente
     agregarCliente(nombre: string, telefono: number): void {
         let nuevoCliente = new Cliente(nombre, telefono);
-        // Verifica que no exista ya un proovedor con el mismo ID
+        // Verifica que no exista ya un cliente con el mismo ID
+
         while (this.clientes.some((cliente) => cliente.getId() === nuevoCliente.getId())) {
             nuevoCliente = new Cliente(nombre, telefono);
         }
@@ -64,7 +61,6 @@ export class Veterinaria {
         } else {
             console.log("El ID ingresado no pertenece a ningún cliente");
         }
-    }
     }
 
 

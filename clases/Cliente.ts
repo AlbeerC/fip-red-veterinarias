@@ -1,5 +1,5 @@
 import { generarId } from "../funciones/generadorId";
-import { Paciente } from "./paciente"; //Arreglar luego de que juan haya creado la clase paciente.
+import { Paciente } from "./Paciente"; //Arreglar luego de que juan haya creado la clase paciente.
 
 export class Cliente {
     private nombre: string;
@@ -13,6 +13,24 @@ export class Cliente {
         this.nombre = nombre;
         this.id = generarId();
         this.telefono = telefono;
+    }
+
+    //Metodos
+    public hacerVisita(paciente: Paciente) {
+        this.visitasTotal += 1;
+        console.log(this.getNombre() + "realizo una visita con " + paciente);
+    }
+    
+    public hacerseVip() : void {
+        if (this.visitasTotal == 5) {
+            this.vip = true;
+            console.log("El cliente " + this.getNombre() + "Ahora es un ciente VIP");
+        }
+    }
+
+    public agregarPaciente(nombre: string, especie: string, edad: number): void {
+        const nuevoPaciente = new Paciente(nombre, this.id, especie, edad)
+        this.pacientes.push(nuevoPaciente)
     }
 
     // Getters
@@ -41,18 +59,5 @@ export class Cliente {
     }
     public setTelefono(NuevoTelefono: number): void {
         this.telefono = NuevoTelefono;
-    }
-
-    //Metodos
-    public hacerVisita(paciente: Paciente[]) {
-        this.visitasTotal =+ 1;
-        console.log(this.getNombre + "realizo una visita con " + paciente);
-    }
-
-    public hacerseVip() : void {
-        if (this.visitasTotal == 5) {
-            this.vip = true;
-            console.log("El cliente " + this.getNombre + "Ahora es un ciente VIP");
-        }
     }
 }
