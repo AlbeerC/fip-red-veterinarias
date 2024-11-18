@@ -24,6 +24,12 @@ export class RedVeterinarias {
         }
     }
 
+    mostrarVeterinarias(): void {
+        this.veterinarias.forEach(veterinaria => {
+            console.log (`Nombre: ${veterinaria.getNombre()}, ubicacion: ${veterinaria.getUbicacion()}`);
+        });
+    }
+
     // Getters
     getNombre(): string {
         return this.nombre;

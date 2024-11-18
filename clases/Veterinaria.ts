@@ -1,6 +1,7 @@
 import { generarId } from '../funciones/generadorId';
 import { Cliente } from './Cliente';
 import { Proovedor } from './Proovedor';
+import { Paciente } from './Paciente';
 
 export class Veterinaria {
     private nombre: string;
@@ -38,15 +39,21 @@ export class Veterinaria {
             console.log("El ID ingresado no pertenece a ningún proovedor");
         }
     }
+
+    mostrarProovedores(): void {
+        this.proovedores.forEach(proovedor => {
+            console.log (`Nombre: ${proovedor.getNombre()}, telefono: ${proovedor.getTelefono()}, id: ${proovedor.getId()}`);
+        });
+    }
     
 
     // Métodos cliente
     agregarCliente(nombre: string, telefono: number): void {
-        let nuevoCliente = new Cliente(nombre, telefono);
+        let nuevoCliente = new Cliente(nombre, telefono, this);
         // Verifica que no exista ya un cliente con el mismo ID
 
         while (this.clientes.some((cliente) => cliente.getId() === nuevoCliente.getId())) {
-            nuevoCliente = new Cliente(nombre, telefono);
+            nuevoCliente = new Cliente(nombre, telefono, this);
         }
 
         this.clientes.push(nuevoCliente);
@@ -63,14 +70,33 @@ export class Veterinaria {
         }
     }
 
-
-    // Métodos paciente
-    agregarPaciente(): void {
-
+    mostrarClientes(): void {
+        this.clientes.forEach(cliente => {
+            console.log (`Nombre: ${cliente.getNombre()}, telefono: ${cliente.getTelefono()}, id: ${cliente.getId()}`);
+        });
     }
 
-    eliminarPaciente(): void {
 
+    // Métodos paciente
+    public agregarPaciente(paciente: Paciente): void {
+        this.pacientes.push(paciente);
+        console.log(`Agregado nuevo paciente ${paciente.getNombre()} con id ${paciente.getidDueño()}`);
+    }
+
+    eliminarPaciente(id: number): void {
+        const index = this.pacientes.findIndex((paciente) => paciente.getidDueño() === id);
+
+        if (index > -1) {
+            this.pacientes.splice(index, 1);
+        } else {
+            console.log("El ID ingresado no pertenece a ningún paciente");
+        }
+    }
+
+    mostrarPacientes(): void {
+        this.pacientes.forEach(paciente => {
+            console.log (`Nombre: ${paciente.getNombre()}, edad: ${paciente.getEdad()}, especie: ${paciente.getEspecie()}, ID del dueño: ${paciente.getidDueño()}`);
+        });
     }
 
 

@@ -1,16 +1,26 @@
-import { Cliente } from "./Cliente";
-
-export class Paciente{
+export class Paciente {
     private nombre: string;
     private especie:string;
-    private IdDueño: number;
+    private idDueño: number;
     private edad: number;
 
-    constructor(nombre:string, especie:string, edad:number, IdDueño: number) {
+    constructor(nombre:string, especie:string, edad:number, idDueño: number) {
         this.nombre = nombre;
         this.especie = especie;
         this.edad = edad;
-        this.IdDueño = getId(); // ver mas tarde
+        this.idDueño = idDueño;
+        this.clasificarEspecie();
+    }
+
+    //metodos
+    clasificarEspecie(): void {
+        if (this.especie.toLowerCase() !== "perro" && this.especie.toLowerCase() !== "gato") {
+            this.especie = "Exótico";
+        }
+    }
+    
+    obtenerInformacion(): string {
+        return `Nombre: ${this.nombre}, Especie: ${this.especie}, Edad: ${this.edad} años, ID del Dueño: ${this.idDueño}`;
     }
 
     //getters
@@ -26,8 +36,8 @@ export class Paciente{
         return this.edad;
     }
 
-    getIdDueño(): number {
-        return this.IdDueño;
+    getidDueño(): number {
+        return this.idDueño;
     }
 
     //setters
@@ -40,28 +50,4 @@ export class Paciente{
     setEdad(edad:number): void {
         this.edad = edad;
     }
-
-    //metodos
-    clasificarEspecie():string {
-        if (this.especie== "perro"){
-            return "El paciente es un perro";
-        } else if(this.especie == "gato"){
-            return "El paciente es un gato";
-        }else {
-            return "El paciente debe ser perro o gato." ;
-            
-        }
-    }
-
-    obtenerInformacion(): string {
-        return `Nombre: ${this.nombre}, Especie: ${this.especie}, Edad: ${this.edad} años, ID del Dueño: ${this.IdDueño}`;
-    }
-
-    }
-
-    
-
-    
-
-
-
+}

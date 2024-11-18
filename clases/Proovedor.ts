@@ -39,6 +39,10 @@ export class Proovedor {
         return this.telefono;
     }
 
+    getInventario(): Producto[] {
+        return this.inventario;
+    }
+
     // Setters
     setNombre(nombre: string): void {
         this.nombre = nombre;

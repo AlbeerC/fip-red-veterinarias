@@ -10,6 +10,7 @@ var RedVeterinarias = /** @class */ (function () {
         this.veterinarias.push(veterinaria);
     };
     RedVeterinarias.prototype.eliminarVeterinaria = function (nombre) {
+        // Busca el índice de la veterinaria que conincida con el nombre ingresado
         var index = this.veterinarias.findIndex(function (vete) { return vete.getNombre().toLowerCase() === nombre.toLowerCase(); });
         // Si el índice es mayor a -1, la veterinaria a eliminar existe
         if (index > -1) {
@@ -18,6 +19,11 @@ var RedVeterinarias = /** @class */ (function () {
         else {
             console.log("El nombre ingresado no pertenece a ninguna veterinaria");
         }
+    };
+    RedVeterinarias.prototype.mostrarVeterinarias = function () {
+        this.veterinarias.forEach(function (veterinaria) {
+            console.log("Nombre: ".concat(veterinaria.getNombre(), ", ubicacion: ").concat(veterinaria.getUbicacion()));
+        });
     };
     // Getters
     RedVeterinarias.prototype.getNombre = function () {
