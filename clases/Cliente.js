@@ -17,9 +17,7 @@ var Cliente = /** @class */ (function () {
     Cliente.prototype.hacerVisita = function (paciente) {
         this.visitasTotal += 1;
         console.log(this.getNombre() + " realizo una visita con " + paciente.getNombre());
-    };
-    Cliente.prototype.hacerseVip = function () {
-        if (this.visitasTotal == 5) {
+        if (this.visitasTotal === 5) {
             this.vip = true;
             console.log("El cliente " + this.nombre + " Ahora es un ciente VIP");
         }
@@ -33,6 +31,18 @@ var Cliente = /** @class */ (function () {
         this.pacientes.forEach(function (paciente) {
             console.log("Nombre: ".concat(paciente.getNombre(), ", edad: ").concat(paciente.getEdad(), ", especie: ").concat(paciente.getEspecie(), ", ID del due\u00F1o: ").concat(paciente.getidDueño()));
         });
+    };
+    Cliente.prototype.eliminarPaciente = function (nombre) {
+        var index = this.pacientes.findIndex(function (paciente) { return paciente.getNombre() === nombre; });
+        var pacienteAEliminar = this.pacientes[index];
+        if (index > -1) {
+            this.pacientes.splice(index, 1);
+            this.veterinaria.eliminarPaciente(pacienteAEliminar);
+            console.log("Paciente eliminado");
+        }
+        else {
+            console.log("El nombre ingresado no pertenece a ningún paciente");
+        }
     };
     // Getters
     Cliente.prototype.getNombre = function () {

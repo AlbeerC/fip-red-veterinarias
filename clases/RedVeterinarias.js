@@ -28,7 +28,7 @@ var RedVeterinarias = /** @class */ (function () {
             return;
         }
         this.veterinarias.forEach(function (veterinaria, index) {
-            console.log("".concat(index + 1, " - ").concat(veterinaria.getNombre(), " - ").concat(veterinaria.getUbicacion()));
+            console.log("".concat(index + 1, " - ").concat(veterinaria.getNombre(), " (").concat(veterinaria.getUbicacion(), ")"));
         });
     };
     // Getters

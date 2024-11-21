@@ -32,7 +32,7 @@ export class RedVeterinarias {
         }
 
         this.veterinarias.forEach((veterinaria, index) => {
-            console.log (`${index + 1} - ${veterinaria.getNombre()} - ${veterinaria.getUbicacion()}`);
+            console.log (`${index + 1} - ${veterinaria.getNombre()} (${veterinaria.getUbicacion()})`);
         });
     }
 

@@ -98,8 +98,8 @@ export class Veterinaria {
         console.log(`Agregado nuevo paciente ${paciente.getNombre()} con id ${paciente.getidDueño()}`);
     }
 
-    eliminarPaciente(nombre: string): void {
-        const index = this.pacientes.findIndex((paciente) => paciente.getNombre() === nombre);
+    eliminarPaciente(paciente: Paciente): void {
+        const index = this.pacientes.findIndex(p => p.getNombre() === paciente.getNombre() && p.getidDueño() === paciente.getidDueño());
 
         if (index > -1) {
             this.pacientes.splice(index, 1);

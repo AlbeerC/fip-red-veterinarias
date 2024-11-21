@@ -22,10 +22,8 @@ export class Cliente {
     public hacerVisita(paciente: Paciente) {
         this.visitasTotal += 1;
         console.log(this.getNombre() + " realizo una visita con " + paciente.getNombre());
-    }
-    
-    public hacerseVip() : void {
-        if (this.visitasTotal == 5) {
+
+        if (this.visitasTotal === 5) {
             this.vip = true;
             console.log("El cliente " + this.nombre + " Ahora es un ciente VIP");
         }
@@ -41,6 +39,20 @@ export class Cliente {
         this.pacientes.forEach(paciente => {
             console.log (`Nombre: ${paciente.getNombre()}, edad: ${paciente.getEdad()}, especie: ${paciente.getEspecie()}, ID del dueño: ${paciente.getidDueño()}`);
         });
+    }
+
+    eliminarPaciente(nombre: string): void {
+        const index = this.pacientes.findIndex((paciente) => paciente.getNombre() === nombre);
+
+        const pacienteAEliminar = this.pacientes[index]
+
+        if (index > -1) {
+            this.pacientes.splice(index, 1);
+            this.veterinaria.eliminarPaciente(pacienteAEliminar)
+            console.log("Paciente eliminado");
+        } else {
+            console.log("El nombre ingresado no pertenece a ningún paciente");
+        }
     }
 
     // Getters

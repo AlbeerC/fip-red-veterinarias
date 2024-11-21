@@ -79,8 +79,8 @@ var Veterinaria = /** @class */ (function () {
         this.pacientes.push(paciente);
         console.log("Agregado nuevo paciente ".concat(paciente.getNombre(), " con id ").concat(paciente.getidDueño()));
     };
-    Veterinaria.prototype.eliminarPaciente = function (nombre) {
-        var index = this.pacientes.findIndex(function (paciente) { return paciente.getNombre() === nombre; });
+    Veterinaria.prototype.eliminarPaciente = function (paciente) {
+        var index = this.pacientes.findIndex(function (p) { return p.getNombre() === paciente.getNombre() && p.getidDueño() === paciente.getidDueño(); });
         if (index > -1) {
             this.pacientes.splice(index, 1);
             console.log("Paciente eliminado");
