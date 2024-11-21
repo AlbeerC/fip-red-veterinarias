@@ -27,14 +27,19 @@ var Veterinaria = /** @class */ (function () {
         var index = this.proovedores.findIndex(function (proovedor) { return proovedor.getId() === id; });
         if (index > -1) {
             this.proovedores.splice(index, 1);
+            console.log("Proovedor eliminado");
         }
         else {
             console.log("El ID ingresado no pertenece a ningún proovedor");
         }
     };
     Veterinaria.prototype.mostrarProovedores = function () {
-        this.proovedores.forEach(function (proovedor) {
-            console.log("Nombre: ".concat(proovedor.getNombre(), ", telefono: ").concat(proovedor.getTelefono(), ", id: ").concat(proovedor.getId()));
+        if (this.proovedores.length === 0) {
+            console.log("No hay proovedores registrados");
+            return;
+        }
+        this.proovedores.forEach(function (proovedor, index) {
+            console.log("".concat(index + 1, " - Nombre: ").concat(proovedor.getNombre(), ", telefono: ").concat(proovedor.getTelefono(), ", id: ").concat(proovedor.getId()));
         });
     };
     // Métodos cliente
@@ -51,14 +56,22 @@ var Veterinaria = /** @class */ (function () {
         var index = this.clientes.findIndex(function (cliente) { return cliente.getId() === id; });
         if (index > -1) {
             this.clientes.splice(index, 1);
+            console.log("Cliente eliminado");
+            // Eliminar los pacientes relacionados con este cliente
+            this.pacientes = this.pacientes.filter(function (paciente) { return paciente.getidDueño() !== id; });
+            console.log("Pacientes del cliente con id ".concat(id, " eliminados"));
         }
         else {
             console.log("El ID ingresado no pertenece a ningún cliente");
         }
     };
     Veterinaria.prototype.mostrarClientes = function () {
-        this.clientes.forEach(function (cliente) {
-            console.log("Nombre: ".concat(cliente.getNombre(), ", telefono: ").concat(cliente.getTelefono(), ", id: ").concat(cliente.getId()));
+        if (this.clientes.length === 0) {
+            console.log("No hay clientes registrados");
+            return;
+        }
+        this.clientes.forEach(function (cliente, index) {
+            console.log("".concat(index + 1, " - Nombre: ").concat(cliente.getNombre(), ", telefono: ").concat(cliente.getTelefono(), ", id: ").concat(cliente.getId()));
         });
     };
     // Métodos paciente
@@ -66,18 +79,23 @@ var Veterinaria = /** @class */ (function () {
         this.pacientes.push(paciente);
         console.log("Agregado nuevo paciente ".concat(paciente.getNombre(), " con id ").concat(paciente.getidDueño()));
     };
-    Veterinaria.prototype.eliminarPaciente = function (id) {
-        var index = this.pacientes.findIndex(function (paciente) { return paciente.getidDueño() === id; });
+    Veterinaria.prototype.eliminarPaciente = function (nombre) {
+        var index = this.pacientes.findIndex(function (paciente) { return paciente.getNombre() === nombre; });
         if (index > -1) {
             this.pacientes.splice(index, 1);
+            console.log("Paciente eliminado");
         }
         else {
-            console.log("El ID ingresado no pertenece a ningún paciente");
+            console.log("El nombre ingresado no pertenece a ningún paciente");
         }
     };
     Veterinaria.prototype.mostrarPacientes = function () {
-        this.pacientes.forEach(function (paciente) {
-            console.log("Nombre: ".concat(paciente.getNombre(), ", edad: ").concat(paciente.getEdad(), ", especie: ").concat(paciente.getEspecie(), ", ID del due\u00F1o: ").concat(paciente.getidDueño()));
+        if (this.pacientes.length === 0) {
+            console.log("No hay pacientes registrados");
+            return;
+        }
+        this.pacientes.forEach(function (paciente, index) {
+            console.log("".concat(index + 1, " - Nombre: ").concat(paciente.getNombre(), ", edad: ").concat(paciente.getEdad(), ", especie: ").concat(paciente.getEspecie(), ", ID del due\u00F1o: ").concat(paciente.getidDueño()));
         });
     };
     // Getters

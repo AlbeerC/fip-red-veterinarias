@@ -27,22 +27,23 @@ cliente1.agregarPaciente("Pulga", "asd", 3)
 cliente2.agregarPaciente(paciente1.getNombre(), paciente1.getEspecie(), paciente1.getEdad())
 
 // Logs
-pelo.mostrarClientes()
+/* pelo.mostrarClientes()
 pelo.mostrarPacientes()
 pelo.mostrarProovedores()
-cliente1.mostrarPacientes()
+cliente1.mostrarPacientes() */
 
 // Vip
-cliente2.hacerseVip()
+/* cliente2.hacerseVip()
 cliente2.hacerVisita(paciente1)
 cliente2.hacerVisita(paciente1)
 cliente2.hacerVisita(paciente1)
 cliente2.hacerVisita(paciente1)
 cliente2.hacerVisita(paciente1)
-cliente2.hacerseVip()
+cliente2.hacerseVip() */
 
 // Eliminar un cliente
 console.log(cliente1.getId())
 pelo.eliminarCliente(cliente1.getId())
 pelo.mostrarClientes()
 cliente1.mostrarPacientes()
+pelo.mostrarPacientes()

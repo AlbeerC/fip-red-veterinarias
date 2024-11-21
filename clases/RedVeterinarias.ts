@@ -8,8 +8,9 @@ export class RedVeterinarias {
         this.nombre = nombre;
     }
 
-    agregarVeterinaria(veterinaria: Veterinaria): void {
-        this.veterinarias.push(veterinaria);
+    agregarVeterinaria(nombre: string, ubicacion: string): void {
+        const nuevaVeterinaria = new Veterinaria(nombre, ubicacion)
+        this.veterinarias.push(nuevaVeterinaria)
     }
 
     eliminarVeterinaria(nombre: string): void {
@@ -25,8 +26,13 @@ export class RedVeterinarias {
     }
 
     mostrarVeterinarias(): void {
-        this.veterinarias.forEach(veterinaria => {
-            console.log (`Nombre: ${veterinaria.getNombre()}, ubicacion: ${veterinaria.getUbicacion()}`);
+        if (this.veterinarias.length === 0) {
+            console.log("No hay veterinarias registradas")
+            return
+        }
+
+        this.veterinarias.forEach((veterinaria, index) => {
+            console.log (`${index + 1} - ${veterinaria.getNombre()} - ${veterinaria.getUbicacion()}`);
         });
     }
 

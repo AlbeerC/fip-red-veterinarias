@@ -1,13 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RedVeterinarias = void 0;
+var Veterinaria_1 = require("./Veterinaria");
 var RedVeterinarias = /** @class */ (function () {
     function RedVeterinarias(nombre) {
         this.veterinarias = [];
         this.nombre = nombre;
     }
-    RedVeterinarias.prototype.agregarVeterinaria = function (veterinaria) {
-        this.veterinarias.push(veterinaria);
+    RedVeterinarias.prototype.agregarVeterinaria = function (nombre, ubicacion) {
+        var nuevaVeterinaria = new Veterinaria_1.Veterinaria(nombre, ubicacion);
+        this.veterinarias.push(nuevaVeterinaria);
     };
     RedVeterinarias.prototype.eliminarVeterinaria = function (nombre) {
         // Busca el índice de la veterinaria que conincida con el nombre ingresado
@@ -21,8 +23,12 @@ var RedVeterinarias = /** @class */ (function () {
         }
     };
     RedVeterinarias.prototype.mostrarVeterinarias = function () {
-        this.veterinarias.forEach(function (veterinaria) {
-            console.log("Nombre: ".concat(veterinaria.getNombre(), ", ubicacion: ").concat(veterinaria.getUbicacion()));
+        if (this.veterinarias.length === 0) {
+            console.log("No hay veterinarias registradas");
+            return;
+        }
+        this.veterinarias.forEach(function (veterinaria, index) {
+            console.log("".concat(index + 1, " - ").concat(veterinaria.getNombre(), " - ").concat(veterinaria.getUbicacion()));
         });
     };
     // Getters

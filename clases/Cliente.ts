@@ -4,7 +4,7 @@ import { Veterinaria } from "./Veterinaria";
 
 export class Cliente {
     private nombre: string;
-    private id: number;
+    private readonly id: number;
     private vip: boolean = false;
     private telefono: number;
     private visitasTotal: number = 0;
